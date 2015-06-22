@@ -1,0 +1,93 @@
+* Introducción
+
+  En este repositorio se ponen las herramientas para tener control de
+  versiones y la resolución del problema de calcular un centro de masa
+  de un objeto tridimensional.
+
+  El código utiliza [[http://www.gnu.org/software/octave/][GNU Octave]], y [[http://maxima.sourceforge.net/][GNU Maxima]] para cálculos, que se pueden instalar
+  en =Ubuntu= mendiante:
+
+  #+begin_src sh
+    sudo apt-get install octave
+    sudo apt-get install maxima
+  #+end_src
+
+  para el control de versiones se utiliza [[https://git-scm.com/][git]], que tiene en =Ubuntu=
+  se puede instalar mediante:
+  #+begin_src sh
+    sudo apt-get install git
+  #+end_src
+
+  También existen versiones de los programas anteriores para
+  =Windows=.
+
+* Clonado del repositorio
+
+  Para clonar el repositorio con =git=, se puede utilizar en la
+  terminal de ubuntu o un lugar similar:
+
+  #+begin_src sh
+    git clone https://github.com/userzc/centro_masa_ala.git
+  #+end_src
+
+* Descripción de los archivos
+
+  Se presenta una descripción de lo que hacen los archivos y cómo
+  hacerlos funcionar.
+
+** centro_masa_ala.m (Octave/Matlab)
+
+   Este archivo es derivado de los archivos que contienen los puntos
+   originales, proponiendo una parametrización de una sección de un
+   ala.
+
+   En caso de que la parametrización no sea la adecuada, se puede
+   cambiar, sin embargo el procedimiento es similar para obtener el
+   volumen.
+
+   Se puede ver la ejecución del archivo en la terminal de ubuntu
+   mediante:
+
+   - Activar la consola de octave
+   #+begin_src sh
+     octave
+   #+end_src
+
+   - Ejecutar el archivo
+   #+begin_src octave
+     octave
+     source centro_masa_ala.m
+   #+end_src
+
+   aunque su ejecución puede tomar más de 10 minutos por la
+   integración numérica en 3D.
+
+** centro_masa_ala.mac (Maxima)
+
+   Este archivo contiene código que auxilia en la verificación del
+   cálculo del jacobiano para realizar el cambio de variables y
+   calcular los volumenes requeridos.
+
+   Se puede utilizar al ejecutar en la terminal de ubuntu:
+
+   - Activar la consola de maxima
+   #+begin_src sh
+     maxima
+   #+end_src
+
+   - Ejecutar el archivo
+   #+begin_src maxima
+     load("centro_masa_ala.mac");
+     values;                                 /*para ver los valores definidos*/
+     J;                                      /*para ver el jacobiano, con signo*/
+   #+end_src
+
+** centro_masa_ala.mat (Octave)
+
+   Como los cálculos pueden tomar mucho tiempo, incluyo este archivo
+   que tiene los resultados después de haberlos calculado y guardados
+   con el comando:
+
+   #+begin_src octave
+     save centro_masa_ala.mat
+   #+end_src
