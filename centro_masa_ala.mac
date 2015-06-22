@@ -1,0 +1,14 @@
+/* En esta parte se comprueban los cálculos del jacobiano para
+realizar la transformación de coordenadas y las integraciones para
+calcular los centros de masa en 3D */
+
+/* Se declara que las funciones de los splines dependen del primer
+parámetro */
+depends([sp_sup, sp_inf], [p_1]);
+
+/* Se definen las ecuaciones del volumen */
+z: (1 - p_2 / (3*la)) *(sp_inf  + (sp_sup - sp_inf) * p_3);
+y: (1 - p_2 /(3*la)) * p_1;
+x: p_2;
+
+J : determinant(jacobian([x, y, z], [p_1, p_2, p_3]));
